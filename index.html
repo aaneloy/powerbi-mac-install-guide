@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Install Power BI on Mac – 2025 Guide</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      color: #222;
+    }
+    header {
+      background: #0078d4;
+      color: #fff;
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+    main {
+      max-width: 720px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 2px 16px #0001;
+      padding: 2.5rem;
+    }
+    h1, h2 {
+      margin-top: 0;
+    }
+    h1 {
+      font-size: 2.4rem;
+      letter-spacing: -.02em;
+    }
+    h2 {
+      margin-top: 2.5rem;
+      color: #0078d4;
+      font-size: 1.4rem;
+    }
+    .toc {
+      background: #eaf4ff;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    .toc a {
+      color: #0078d4;
+      text-decoration: none;
+      margin-right: 1.2rem;
+    }
+    code, pre {
+      background: #f0f0f0;
+      border-radius: 4px;
+      font-size: 1em;
+      padding: 0.2em 0.4em;
+      color: #c7254e;
+    }
+    .tip {
+      background: #e7f4e4;
+      border-left: 4px solid #27ae60;
+      padding: 0.7em 1em;
+      margin: 1em 0;
+      border-radius: 8px;
+      color: #234d20;
+    }
+    .warn {
+      background: #fff5e5;
+      border-left: 4px solid #e67e22;
+      padding: 0.7em 1em;
+      margin: 1em 0;
+      border-radius: 8px;
+      color: #834c0c;
+    }
+    ol, ul {
+      padding-left: 1.5em;
+    }
+    @media (max-width: 800px) {
+      main { padding: 1rem; }
+      h1 { font-size: 2rem; }
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      margin: 2rem auto 1rem auto;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Install Power BI on Mac (2025 Guide)</h1>
+  <p>The ultimate, up-to-date guide for running Microsoft Power BI Desktop on macOS.</p>
+</header>
+<main>
+<div class="toc">
+  <b>Quick Navigation:</b>
+  <ul>
+    <li><a href="#step1">1. Check Mac Processor</a></li>
+    <li><a href="#step2">2. Choose Your VM</a></li>
+    <li><a href="#step3">3. Download Windows ISO</a></li>
+    <li><a href="#step4">4. Install the VM</a></li>
+    <li><a href="#step5">5. Set Up Windows</a></li>
+    <li><a href="#step6">6. Install Power BI</a></li>
+    <li><a href="#step7">7. Tips</a></li>
+  </ul>
+</div>
+
+  <h2 id="step1">1. Check Your Mac’s Processor</h2>
+  <ol>
+    <li>Click the <b>Apple</b> icon (<span style="font-size:1.1em"></span>) at the top left of your screen.</li>
+    <li>Select <b>About This Mac</b>.</li>
+    <li>In the window that appears:
+      <ul>
+        <li>If you see <b>Intel</b> (e.g., “Intel Core i5/i7/i9”), your Mac has an Intel processor.</li>
+        <li>If you see <b>Apple M1, M2, or M3</b>, your Mac uses Apple Silicon.</li>
+      </ul>
+    </li>
+  </ol>
+  <div class="tip">
+    <b>Tip:</b> Write down your processor type, you’ll need it for the next steps.
+  </div>
+
+  <h2 id="step2">2. Choose the Right Virtual Machine (VM)</h2>
+  <ol>
+    <li>
+      <b>For Intel Macs:</b>
+      <ul>
+        <li>Recommended: <a href="https://www.parallels.com/products/desktop/trial/" target="_blank">Parallels Desktop (Free Trial/Student Discount)</a></li>
+        <li>Alternatives: <a href="https://www.vmware.com/products/fusion.html" target="_blank">VMware Fusion Player (Free for Personal Use)</a></li>
+      </ul>
+    </li>
+    <li>
+      <b>For Apple Silicon (M1/M2/M3):</b>
+      <ul>
+        <li><b>Best:</b> <a href="https://www.parallels.com/products/desktop/trial/" target="_blank">Parallels Desktop</a> (fully supports Windows ARM)</li>
+        <li><b>Free:</b> <a href="https://mac.getutm.app/" target="_blank">UTM</a> (open-source, more manual, slower graphics)</li>
+      </ul>
+    </li>
+    <li>
+      <b>Why?</b> Power BI requires Windows. The VM lets you run Windows apps on your Mac in a separate window.
+    </li>
+  </ol>
+  <div class="warn">
+    <b>Note:</b> Apple Silicon Macs require the ARM version of Windows. Parallels makes this easy, but UTM is a free alternative.
+  </div>
+
+  <h2 id="step3">3. Download the Right Windows ISO</h2>
+  <ol>
+    <li>Go to the official Microsoft Windows download page:
+      <ul>
+        <li><a href="https://www.microsoft.com/software-download/windowsinsiderpreviewARM64" target="_blank">Windows ARM (for Apple Silicon)</a></li>
+        <li><a href="https://www.microsoft.com/software-download/windows10" target="_blank">Windows 10 ISO (for Intel)</a> or <a href="https://www.microsoft.com/software-download/windows11" target="_blank">Windows 11 ISO</a></li>
+      </ul>
+    </li>
+    <li>
+      <b>For Apple Silicon:</b> Download <b>Windows 11 ARM Insider Preview</b>.
+      <ul>
+        <li>You’ll need a (free) Microsoft account to sign up for the Windows Insider Program.</li>
+      </ul>
+    </li>
+    <li>
+      <b>For Intel Macs:</b> Download Windows 10/11 ISO (x64).</li>
+  </ol>
+  <div class="tip">
+    <b>Tip:</b> Save the ISO file somewhere easy to find, such as your Downloads folder.
+  </div>
+
+<h2 id="step4">4. Install Your Virtual Machine</h2>
+<ol>
+  <li>
+    <b>Install your chosen VM app:</b>
+    <ul>
+      <li><b>Parallels Desktop:</b> Download from <a href="https://www.parallels.com/products/desktop/trial/" target="_blank">Parallels Website</a>. Open the downloaded <code>.dmg</code> file, then double-click <b>Install Parallels Desktop</b>. Follow the on-screen prompts to complete installation (drag icon to Applications if prompted).</li>
+      <li><b>VMware Fusion Player:</b> Download from <a href="https://www.vmware.com/products/fusion.html" target="_blank">VMware Fusion Website</a>. Open the <code>.dmg</code>, double-click <b>Install VMware Fusion</b>, follow the installation assistant, and move to Applications if asked.</li>
+      <li><b>UTM:</b> Download from <a href="https://mac.getutm.app/" target="_blank">UTM Website</a> (click “Download Latest”). Open the <code>.dmg</code> and drag the <b>UTM</b> icon to Applications.</li>
+    </ul>
+  </li>
+  
+  <li>
+    <b>Open the VM app from your Applications folder.</b>
+  </li>
+  
+  <li>
+    <b>Create a new virtual machine for Windows:</b>
+    <ul>
+      <li>
+        <b>Parallels Desktop:</b>
+        <ol>
+          <li>Click <b>File</b> → <b>New</b> or click <b>+ New</b> on the home screen.</li>
+          <li>Choose <b>Install Windows or another OS from a DVD or image file</b> (not the “Get Windows from Microsoft” option, unless you wish to download directly).</li>
+          <li>Click <b>Continue</b>.</li>
+          <li>Parallels will usually auto-detect your Windows ISO. If not, click <b>Choose Manually</b> and select your downloaded ISO.</li>
+          <li>Click <b>Continue</b>.</li>
+          <li>Choose <b>Install Windows</b> (recommended), then <b>Continue</b>.</li>
+          <li>For configuration:
+            <ul>
+              <li><b>Name:</b> Enter a name (e.g., "Windows 11 for Power BI").</li>
+              <li><b>Location:</b> Accept default or select custom folder.</li>
+              <li><b>Customize before installation:</b> (Optional, but you can click this to adjust RAM/CPU now.)</li>
+            </ul>
+          </li>
+          <li>Click <b>Create</b>.</li>
+          <li>When VM settings appear (if you chose to customize), set:
+            <ul>
+              <li><b>CPU:</b> At least 2 cores (4+ is better if available).</li>
+              <li><b>RAM:</b> At least 4 GB (8 GB if your Mac has 16 GB+ RAM).</li>
+              <li><b>Disk:</b> At least 40 GB.</li>
+            </ul>
+            Click <b>Close</b> to save settings.
+          </li>
+          <li>Click <b>Continue</b> to start the VM. Windows installation will begin.</li>
+        </ol>
+      </li>
+      
+      <li>
+        <b>VMware Fusion Player:</b>
+        <ol>
+          <li>Click <b>File</b> → <b>New</b>.</li>
+          <li>Select <b>Install from disc or image</b>, then click <b>Continue</b>.</li>
+          <li>Click <b>Use another disc or disc image</b>, find your Windows ISO, select it, then click <b>Open</b> and <b>Continue</b>.</li>
+          <li>Choose <b>Legacy BIOS</b> (for Windows 10), or <b>UEFI</b> (for Windows 11), then <b>Continue</b>.</li>
+          <li>For “Choose a Virtual Disk,” select <b>Create a new virtual disk</b>, click <b>Continue</b>.</li>
+          <li>Set <b>Maximum disk size</b> to at least 40 GB and select <b>Split into multiple files</b> (recommended).</li>
+          <li>Name the VM (e.g., "Windows for Power BI") and click <b>Finish</b>.</li>
+          <li>The VM summary window will appear. Click <b>Customize Settings</b> if you wish to set RAM/CPU:
+            <ul>
+              <li><b>Processors & Memory:</b> Assign at least 2 cores and 4 GB RAM.</li>
+            </ul>
+          </li>
+          <li>Close the settings. Click the play/start button (▶) to boot the VM and begin Windows installation.</li>
+        </ol>
+      </li>
+      
+      <li>
+        <b>UTM:</b>
+        <ol>
+          <li>Open UTM. Click the <b>+</b> (Create a New Virtual Machine).</li>
+          <li>Choose <b>Virtualize</b> (not Emulate) if using Apple Silicon and Windows ARM ISO.</li>
+          <li>Select <b>Windows</b>, then click <b>Next</b>.</li>
+          <li>Under <b>System</b> tab:
+            <ul>
+              <li><b>Architecture:</b> aarch64 (for Apple Silicon) or x86_64 (for Intel Macs).</li>
+              <li>Assign at least 4 GB RAM, more if you can.</li>
+              <li>CPU Cores: 2 or more.</li>
+            </ul>
+          </li>
+          <li>Under <b>Drives</b> tab:
+            <ul>
+              <li>Click <b>Import Drive</b> or <b>New Drive</b> for your main hard disk. Make it at least 40 GB.</li>
+              <li>Click <b>New Drive</b> → <b>Removable</b> → Select your Windows ISO.</li>
+            </ul>
+          </li>
+          <li>Click <b>Save</b> or <b>Create</b>.</li>
+          <li>Select your new VM in UTM, then click <b>Play</b> to start. Windows installation will start.</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <b>Continue with Windows installation inside the VM:</b>
+    <ol>
+      <li>When the Windows setup screen appears, choose your language, time, and keyboard (default options are usually fine), then click <b>Next</b>.</li>
+      <li>Click <b>Install now</b>.</li>
+      <li>If asked for a product key, click <b>I don't have a product key</b> to proceed (you can activate Windows later).</li>
+      <li>Select the Windows edition you want (e.g., Windows 11 Home or Pro), then click <b>Next</b>.</li>
+      <li>Accept license terms and click <b>Next</b>.</li>
+      <li>For installation type, select <b>Custom: Install Windows only (advanced)</b>.</li>
+      <li>Select the unallocated drive (your virtual disk), then click <b>Next</b>.</li>
+      <li>Windows will copy files and install (this takes 10–30 minutes, depending on your Mac).</li>
+    </ol>
+  </li>
+
+  <li>
+    <b>After installation, Windows will restart automatically. Follow the setup prompts:</b>
+    <ul>
+      <li>Choose your region and keyboard layout.</li>
+      <li>Connect to your network (if prompted).</li>
+      <li>Create or sign in with a Microsoft account (required for Power BI).</li>
+      <li>Create a user account and password as needed.</li>
+      <li>Accept or skip privacy/customization options as you prefer.</li>
+    </ul>
+  </li>
+
+  <li>
+    <b>Configure VM settings for best performance (if not already done):</b>
+    <ul>
+      <li><b>RAM:</b> 4 GB minimum (8 GB+ recommended if you have enough Mac RAM).</li>
+      <li><b>CPU:</b> 2 cores minimum (4+ recommended).</li>
+      <li><b>Disk:</b> 40 GB or more.</li>
+    </ul>
+  </li>
+</ol>
+<div class="warn">
+  <b>Note:</b> You do not need to enter a Windows product key to use Windows for testing. You can activate later or use without activation with minor limitations.
+</div>
+<div class="warn">
+  <b>Note:</b> You might see a message saying Windows needs to be activated. For most uses, you can run Windows without activation, but there will be a watermark and some personalization features will be disabled. Activation is required for a permanent, fully functional installation.
+  <br>
+  <b>To activate:</b> Purchase a Windows license and enter your product key in <b>Settings &gt; System &gt; Activation</b>.
+</div>
+
+
+  <h2 id="step5">5. Set Up Windows in Your VM</h2>
+  <ol>
+    <li>Follow Windows setup prompts (region, language, Microsoft account, etc.).</li>
+    <li>Once at the Windows desktop, connect your VM to the internet (should work automatically).</li>
+    <li>
+      Install VM Tools for best performance:
+      <ul>
+        <li>Parallels: Install Parallels Tools (automatic prompt).</li>
+        <li>VMware Fusion: Install VMware Tools (menu: “Virtual Machine” → “Install VMware Tools”).</li>
+        <li>UTM: Installs drivers automatically, but 3D graphics may be limited.</li>
+      </ul>
+    </li>
+    <li>
+      Optional: Set the display to “Scaled” mode to fit your Mac screen.
+    </li>
+  </ol>
+<div class="warn">
+  <b>Note:</b> You might see a message saying Windows needs to be activated. For most uses, you can run Windows without activation, but there will be a watermark and some personalization features will be disabled. Activation is required for a permanent, fully functional installation. <br>
+  <b>To activate:</b> Purchase a Windows license and enter your product key in Settings > System > Activation.
+</div>
+
+
+
+  <h2 id="step6">6. Install Power BI Desktop</h2>
+  <ol>
+    <li>Open <b>Microsoft Edge</b> (or any browser) inside your Windows VM.</li>
+    <li>
+      Go to: <a href="https://powerbi.microsoft.com/desktop/" target="_blank">https://powerbi.microsoft.com/desktop/</a>
+    </li>
+    <li>Click <b>Download Free</b>.</li>
+    <li>
+      Run the downloaded installer:
+      <ul>
+        <li>Accept the default options.</li>
+        <li>After installation, launch <b>Power BI Desktop</b> from the Start menu.</li>
+      </ul>
+    </li>
+    <li>
+      Sign in with your Microsoft account (or create one for free).
+    </li>
+  </ol>
+  <div class="tip">
+    <b>Tip:</b> Pin Power BI Desktop to your Windows taskbar for quick access.
+  </div>
+
+  <h2 id="step7">7. Tips and Troubleshooting</h2>
+  <ul>
+    <li>If Power BI crashes on launch, update your VM Tools/Parallels/Windows to the latest version.</li>
+    <li>For Apple Silicon, some Power BI features may not be available due to ARM limitations, but most functions work.</li>
+    <li>If you need more speed, increase the RAM or CPU assigned to your VM in its settings.</li>
+    <li>You can copy/paste files between your Mac and Windows by drag-and-drop (after installing VM tools).</li>
+    <li>Consider saving your Power BI reports to OneDrive or cloud storage for easy cross-platform access.</li>
+    <li>For keyboard shortcuts, use the Windows layout while inside the VM.</li>
+    <li>Free alternatives: Try Power BI Web for viewing/sharing, but building reports still requires the Desktop app.</li>
+  </ul>
+
+  <h2>FAQ</h2>
+  <ul>
+    <li><b>Q: Is there a native Power BI Desktop app for Mac?</b><br>
+      <i>No, only the web version (Power BI Service) is available natively. For Desktop, you need a VM as shown above.</i>
+    </li>
+    <li><b>Q: Will this work on older Macs?</b><br>
+      <i>Yes, as long as you have at least 8 GB RAM and 40 GB free disk space.</i>
+    </li>
+    <li><b>Q: Is Parallels free?</b><br>
+      <i>Parallels offers a free trial and a student discount. VMware Fusion Player is free for personal use. UTM is always free.</i>
+    </li>
+  </ul>
+
+</main>
+<footer>
+  <footer>
+  © 2025 Power BI Mac Install Guide &bull; Maintained by <a href="https://aaneloy.github.io/" target="_blank" style="color:#0078d4;text-decoration:underline;">Asif Ahmed Neloy</a>
+</footer>
+
+</footer>
+</body>
+</html>
