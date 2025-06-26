@@ -12,4 +12,4 @@ This project provides a comprehensive, step-by-step tutorial on installing and r
 
 ## Start the Guide
 
-See the full tutorial: [GitHub Pages Site](https://your-username.github.io/powerbi-mac-install-guide/)
+See the full tutorial: [GitHub Pages Site](https://aaneloy.github.io/powerbi-mac-install-guide/)
