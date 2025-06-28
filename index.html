@@ -104,6 +104,7 @@
     <li><a href="#step5">5. Set Up Windows</a></li>
     <li><a href="#step6">6. Install Power BI</a></li>
     <li><a href="#step7">7. Tips</a></li>
+    <li><a href="#common-issues">8. Common Issues and Troubleshooting</a></li>
   </ul>
 </div>
 
@@ -259,6 +260,81 @@
     </ul>
   </li>
 
+  <h3 id="utm-virtio-troubleshoot">If Windows Cannot Find a Hard Disk (UTM VirtIO Driver Fix for UTM Users)</h3>
+<p>
+If you are installing Windows in UTM and get to the screen that says “Where do you want to install Windows?” but <b>no drives appear</b> (and Windows asks you to “Load driver”), you need to load the VirtIO storage driver manually. Here’s how:
+</p>
+
+<ol>
+  <li>
+    <b>Shut down the VM if Windows installation is stuck on the “Load driver” screen:</b>
+    <ul>
+      <li>In the UTM window, click the stop or power button to turn off the VM.</li>
+    </ul>
+  </li>
+  <li>
+    <b>Download the VirtIO driver ISO:</b>
+    <ul>
+      <li>Go to the official Fedora VirtIO driver page: <a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso" target="_blank">https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso</a></li>
+      <li>Save the file (usually called <code>virtio-win.iso</code>) somewhere you can easily find, such as your Downloads folder.</li>
+    </ul>
+  </li>
+  <li>
+    <b>Add the VirtIO ISO as a second CD/DVD drive in your UTM VM settings:</b>
+    <ul>
+      <li>Open UTM and select your Windows VM (do not start it yet).</li>
+      <li>Click the <b>Settings</b> (gear) icon for the VM.</li>
+      <li>In the sidebar, go to <b>Drives</b>.</li>
+      <li>Click <b>New Drive</b>.</li>
+      <li>For “Interface,” select <b>USB</b> or <b>IDE</b> (either is fine for a CD/DVD).</li>
+      <li>For “Type,” select <b>Removable</b>.</li>
+      <li>Click <b>Browse</b> and select the <code>virtio-win.iso</code> you downloaded.</li>
+      <li>Click <b>Save</b> or <b>OK</b> to apply the changes.</li>
+    </ul>
+  </li>
+  <li>
+    <b>Start your Windows VM again.</b>
+    <ul>
+      <li>Click <b>Play</b> in UTM.</li>
+      <li>Wait for the Windows Setup screen to appear.</li>
+      <li>Proceed until you see the screen: “Where do you want to install Windows?”</li>
+      <li>No drives will be listed—click <b>Load driver</b>.</li>
+    </ul>
+  </li>
+  <li>
+    <b>Load the VirtIO driver inside Windows Setup:</b>
+    <ul>
+      <li>In the “Load driver” dialog, click <b>Browse</b>.</li>
+      <li>In the file browser, you’ll see several drives. Look for the <b>VirtIO</b> driver disk. This will usually be labeled as <b>CD Drive (D:)</b> or <b>E:</b>. The name may show as <b>virtio-win</b>.</li>
+      <li>Double-click the <b>CD Drive</b> for VirtIO.</li>
+      <li>
+        Drill down into the folders (step-by-step):
+        <ul>
+          <li>Open the <b>vioscsi</b> folder.</li>
+          <li>Open the folder for your Windows version:
+            <ul>
+              <li>For Windows 11 or 10 (64-bit), use <b>amd64</b>.</li>
+              <li>For ARM builds, look for <b>arm64</b> if present.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Select the <b>.inf</b> file in that folder (it may be called <b>vioscsi.inf</b> or similar), and click <b>OK</b> or <b>Next</b>.</li>
+      <li>Windows Setup will now load the driver.</li>
+    </ul>
+  </li>
+  <li>
+    <b>Your virtual hard disk should now appear in the list of drives.</b>
+    <ul>
+      <li>Select the drive and click <b>Next</b> to continue installing Windows as normal.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="tip">
+  <b>Tip:</b> If the drive still does not appear, make sure you selected the correct <b>vioscsi</b> or <b>viostor</b> driver for your Windows version. Try repeating the browse steps. For ARM-based Windows, always look for the <b>arm64</b> driver.
+</div>
+
   <li>
     <b>Continue with Windows installation inside the VM:</b>
     <ol>
@@ -358,6 +434,102 @@
     <li>For keyboard shortcuts, use the Windows layout while inside the VM.</li>
     <li>Free alternatives: Try Power BI Web for viewing/sharing, but building reports still requires the Desktop app.</li>
   </ul>
+
+  <h2 id="common-issues">Common Issues and Extra Steps</h2>
+
+<p>
+If you run into any problems during installation, check this section for solutions. Each step is explained in detail so you can solve most issues on your own.
+</p>
+
+<ol>
+  <li>
+    <b>Windows asks for a product key:</b>
+    <ul>
+      <li>During Windows setup, you may see a screen asking for a product key.</li>
+      <li>If you do not have a key, click the option that says <b>“I don’t have a product key”</b> (sometimes shown as “Skip” or “Do this later”).</li>
+      <li>You can finish installing Windows without a key. Windows will still work, but you will see a watermark on the desktop, and you cannot change some personalization settings.</li>
+      <li>If you need a fully activated copy, you can purchase a Windows license and enter the key later in Settings.</li>
+    </ul>
+  </li>
+  
+  <li>
+    <b>The VM freezes or gets stuck during installation:</b>
+    <ul>
+      <li>If your virtual machine stops responding or stays on one screen for a long time (over 10 minutes), stop the VM by clicking the <b>Power</b> or <b>Stop</b> button in your VM app.</li>
+      <li>Wait until the VM is fully shut down.</li>
+      <li>Restart the VM and try again from the last step you completed.</li>
+      <li>If this happens more than once, delete the VM (in the app, right-click and choose “Delete” or “Remove”), and create a new one from the beginning, making sure you follow every setup step carefully.</li>
+      <li>Make sure both the Windows ISO and the VirtIO ISO (for UTM) are properly attached in the VM settings before starting again.</li>
+    </ul>
+  </li>
+  
+  <li>
+    <b>No internet connection in Windows after install:</b>
+    <ul>
+      <li>If Windows cannot connect to the internet inside the VM:</li>
+      <li>For <b>UTM</b> users: You need to manually install the network driver from the VirtIO ISO.</li>
+      <li>In Windows, open <b>This PC</b> or <b>File Explorer</b>, then double-click the VirtIO CD drive (it may show as D: or E: and be named “virtio-win”).</li>
+      <li>Open the <b>NetKVM</b> folder.</li>
+      <li>Choose the folder for your version of Windows: <b>amd64</b> for most users, or <b>arm64</b> for ARM Windows.</li>
+      <li>Right-click the <b>.inf</b> file and choose <b>Install</b>. If this option does not appear, open <b>Device Manager</b> in Windows, find the network device (it may have a yellow warning symbol), right-click and choose <b>Update Driver</b>, then select <b>Browse my computer for drivers</b> and point it to the NetKVM folder on the VirtIO CD.</li>
+      <li>Once installed, your network should start working. You can test it by opening Microsoft Edge and browsing to any website.</li>
+      <li>For Parallels or VMware: Make sure you have installed the Parallels Tools or VMware Tools when prompted after Windows boots up for the first time. These packages enable network and copy-paste features.</li>
+    </ul>
+  </li>
+  
+  <li>
+    <b>Cannot drag and drop or copy files between Mac and Windows:</b>
+    <ul>
+      <li>For Parallels or VMware: After Windows starts for the first time, you should see a prompt to install Parallels Tools or VMware Tools. If you do not see a prompt, check the app’s menu for an option like “Install Tools” or “Install Parallels Tools.”</li>
+      <li>Follow the instructions to install these tools. Once installed, you will be able to drag and drop files, and use copy-paste between Mac and Windows.</li>
+      <li>For UTM: Drag-and-drop and copy-paste are limited. If you need to move files, use a cloud storage service (such as Google Drive or OneDrive). Save files to the cloud on one system and access them from the other.</li>
+    </ul>
+  </li>
+  
+  <li>
+    <b>Windows in the VM is slow or laggy:</b>
+    <ul>
+      <li>Shut down the VM completely (do not just suspend or close the window).</li>
+      <li>Open your VM app and go to the settings for your Windows VM.</li>
+      <li>Increase the amount of RAM to at least 4 GB (8 GB or more if your Mac has enough memory).</li>
+      <li>Increase CPU allocation to at least 2 cores (4 if available and your Mac can spare it).</li>
+      <li>Close settings, restart the VM, and try again.</li>
+      <li>Close all other heavy programs on your Mac while using the VM to give it more resources.</li>
+    </ul>
+  </li>
+  
+  <li>
+    <b>Power BI installation fails or crashes:</b>
+    <ul>
+      <li>Open <b>Settings</b> in Windows, go to <b>Update & Security</b>, and run <b>Windows Update</b> to install all available updates.</li>
+      <li>Restart the VM after updates.</li>
+      <li>Try downloading the latest Power BI installer again from the official Microsoft site inside the VM.</li>
+      <li>If Power BI still does not open, make sure you have installed all available VM tools (Parallels Tools, VMware Tools, or VirtIO drivers for UTM).</li>
+      <li>If using an ARM-based version of Windows, be aware that some Power BI features might not work. Most basic features, including report creation, should work.</li>
+    </ul>
+  </li>
+  
+  <li>
+    <b>Screen size in Windows VM is too small or too large:</b>
+    <ul>
+      <li>In Windows, right-click on the desktop and select <b>Display settings</b>.</li>
+      <li>Under <b>Scale and layout</b>, adjust the scale (for example, try 125% or 150%) and screen resolution until the display looks correct for your screen.</li>
+      <li>In Parallels or VMware, you can also use the app’s View menu to select “Scaled” or “Best for Retina Display” for a better fit.</li>
+      <li>In UTM, use Windows display settings as above.</li>
+    </ul>
+  </li>
+  
+  <li>
+    <b>VM won’t boot from the Windows ISO (black screen or “No bootable device”):</b>
+    <ul>
+      <li>Shut down the VM.</li>
+      <li>Go into the VM settings and check the list of attached drives.</li>
+      <li>Make sure the Windows ISO is attached and set as the first boot drive.</li>
+      <li>If not, remove and re-add the ISO, or move it up in the boot order (if your VM app allows).</li>
+      <li>Restart the VM. If the problem remains, re-create the VM and carefully follow each step in the guide.</li>
+    </ul>
+  </li>
+</ol>
 
   <h2>FAQ</h2>
   <ul>
